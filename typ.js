@@ -137,3 +137,12 @@ document.getElementById('rbt').addEventListener('click', () => {
   location.reload(); 
 });
     loadParagraph();
+        setTimeout(() => {
+      document.querySelector('.logo').classList.add('show');
+    }, 2000);
+
+    setTimeout(() => {
+      document.getElementById('intro').style.display = 'none';
+      document.getElementById('mainContent').classList.add('show');
+      document.body.style.overflow = 'auto';
+    }, 4000);
