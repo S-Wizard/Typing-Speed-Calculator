@@ -1,4 +1,3 @@
-/* General Body and Font Setup */
 body {
     background-color: #1a1a2e;
     color: #e0e0e0;
@@ -14,7 +13,6 @@ body {
     padding: 0 25px;
 }
 
-/* Header Section (Heading + Timer) */
 .test-header {
     display: flex;
     justify-content: space-between;
@@ -45,6 +43,7 @@ body {
 #highwpm {
     font-size: 0.6em; /* Relative to timer's font size */
     display: flex;
+    margin-left:50px ;
     justify-content: center;
     align-items: center;
     border-radius: 8px;
@@ -56,14 +55,13 @@ body {
     margin-bottom: 10px;
 }
 #highwpm p {
-    margin: 0;
+    margin-left: 0;
 }
 #trophy {
     margin-right: 15px;
     color: white;
 }
 
-/* Typing Box Section */
 .typing-container {
     display: grid; /* Use Grid to perfectly overlay elements */
     background: rgba(255, 255, 255, 0.05);
@@ -78,11 +76,9 @@ body {
 }
 
 #para, #typed {
-    /* This makes both elements occupy the exact same space */
     grid-column: 1;
     grid-row: 1;
 
-    /* Shared styling for perfect text alignment */
     padding: 25px;
     font-family: 'Roboto Mono', monospace;
     font-size: 1.6em;
@@ -94,26 +90,25 @@ body {
     margin: 0;
     width: 100%;
     height: 100%;
-    box-sizing: border-box; /* Important for grid layout */
+    box-sizing: border-box; 
 }
 
 #para {
     color: rgba(255, 255, 255, 0.3);
-    pointer-events: none; /* Allows clicks to go through to the textarea */
+    pointer-events: none; 
     z-index: 1;
 }
 
 #typed {
     background: transparent;
-    color: transparent; /* This is the main fix! Hides the actual text */
+    color: transparent; 
     border: none;
     resize: none;
     outline: none;
-    z-index: 2; /* Sits on top of the #para div */
-    caret-color: #00BBFF; /* Makes the typing cursor visible */
+    z-index: 2; 
+    caret-color: #00BBFF;
 }
 
-/* Character Highlighting */
 .correct {
     color: #00BBFF;
 }
@@ -124,7 +119,6 @@ body {
 
 
 
-/* Results Popup */
 .popupoverlay {
     display: none;
     position: fixed;
@@ -188,7 +182,6 @@ body {
     transform: scale(1.05);
 }
 
-/* Original Header (Logo) */
 #plate {
     height: 80px;
     background-color: #1a1a2e;
@@ -204,3 +197,92 @@ body {
     object-fit: contain;
     object-position: left;
 }
+    #intro {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: #000;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 10;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      color: white;
+      font-size: 3rem;
+      opacity: 0;
+      animation: fadeIn 1s ease 2s forwards;
+    }
+
+    .box {
+      width: 90px;
+      height: 90px;
+      border: 4px solid #00aaff;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 20px;
+      font-weight: bold;
+      font-size: 2.5rem;
+      color: white;
+      transform: scale(0.8);
+      animation: boxAnimate 2s ease forwards;
+    }
+
+    .highlight {
+      color: #00aaff;
+    }
+
+    @keyframes boxAnimate {
+      0% {
+        transform: scale(0.8);
+        border-color: gray;
+      }
+      50% {
+        transform: scale(1.05);
+        border-color: #00aaff;
+      }
+      100% {
+        transform: scale(1);
+        border-color: #00aaff;
+      }
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateX(40px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .logo.show .box {
+      animation: moveLeft 1s ease forwards 2s;
+    }
+
+    @keyframes moveLeft {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-30px);
+      }
+    }
+
+    .main-content-wrapper {
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    .main-content-wrapper.show {
+      opacity: 1;
+    }
